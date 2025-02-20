@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPi LED Control</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function toggleLight() {
+            $.ajax({
+                url: '/toggle',
+                type: 'POST',
+                success: function(data) { 
+                    const bulbImage = document.getElementById('bulbImage');
+
+                    if (data.status === "ON") {
+                        bulbImage.src = "{{ url_for('static', filename='images/lightOn.png') }}";  // Bulb on image
+                    } else {
+                        bulbImage.src = "{{ url_for('static', filename='images/lightOff.png') }}"; // Bulb off image
+                    }
+                },
+                error: function() {
+                    alert('Error toggling the LED.');
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Raspberry Pi LED Control</h1>
+    <img id="switchImage" src="{{ url_for('static', filename='images/switch.png') }}" alt="Switch" style="cursor:pointer;" onclick="toggleLight()">
+    <img id="bulbImage" src="{{ url_for('static', filename='images/lightOff.png') }}" alt="Lightbulb">
+</body>
+</html>
