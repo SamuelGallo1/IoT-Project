@@ -1,0 +1,133 @@
+/* styles.css */
+body {
+    display: flex;
+    justify-content: center; /* Center the container horizontally */
+    align-items: center; /* Center the container vertically */
+    height: 100vh; /* Full viewport height */
+    background-color: #f0f0f0; /* Optional: Background color */
+    margin: 0; /* Remove default margin */
+}
+
+.container {
+    display: flex; /* Use flexbox to arrange items in a row */
+    justify-content: center; /* Center all items horizontally */
+    align-items: center; /* Align items vertically centered */
+}
+
+.gauge {
+    margin: 10px; /* Add some spacing between the gauges and fan */
+    width: 300px;
+    height: 300px;
+    font-family: "Roboto", sans-serif;
+    font-size: 32px;
+    color: #004033;
+}
+
+#temperature-gauge {
+    position: relative;
+}
+
+#gauge__body {
+    width: 100%;
+    height: 0;
+    padding-bottom: 50%;
+    background: #1a1a1a;
+    position: relative;
+    border-top-left-radius: 100% 200%;
+    border-top-right-radius: 100% 200%;
+    overflow: hidden;
+}
+
+#gauge__fill {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: inherit;
+    height: 100%;
+    background: #6200ff; /* Gauge fill color */
+    transform-origin: center top;
+    transform: rotate(0.25turn);
+    transition: transform 0.2s ease-out; /* Transition effect */
+}
+
+#gauge__cover {
+    width: 75%;
+    height: 150%;
+    background: rgb(51, 51, 51);
+    color: aliceblue;
+    border-radius: 50%;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+  
+    /* Text styling */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 25%;
+    box-sizing: border-box;
+}
+
+#fu-progress {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border: 5px solid rgb(0, 0, 0);
+    border-radius: 50%;
+}
+
+#fu-inner {
+    position: absolute;
+    overflow: hidden;
+    z-index: 2;
+    width: 240px;
+    height: 240px;
+    border: 5px solid #ffffff;
+    border-radius: 50%;
+}
+
+#water {
+    position: absolute;
+    z-index: 1;
+    background: rgba(185, 227, 255, 0.5);
+    width: 200%;
+    height: 200%;
+    transform: translateZ(0);
+    transition: all 1s ease !important;
+    top: 100%;
+    left: -50%;
+    border: 1px solid transparent;
+    border-radius: 40% !important;
+    
+    animation-duration: 10s;
+    animation-name: spin;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+#fu-percent {
+    position: absolute;
+    top: 57px;
+    width: 100%;
+    height: 100%;
+  
+    font-size: 6em;
+    font-weight: bold;
+    color: rgb(0, 180, 252);
+    text-align: center;
+}
+
+#fan {
+    width: 100px;
+    transition: transform 0.5s; /* Smooth transition for fan spin */
+}
+
+.spin {
+    animation: spin 1s linear infinite; /* Continuous spin */
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

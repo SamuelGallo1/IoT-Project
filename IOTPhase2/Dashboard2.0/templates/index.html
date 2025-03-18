@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature and Humidity Monitor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='humidity.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='temperature.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='humidity.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='temperature.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    
+    <script>
+        const fanOnUrl = "{{ url_for('static', filename='fanOn.png') }}";
+        const fanUrl = "{{ url_for('static', filename='fan.png') }}";
+    </script>
+    <script src="{{ url_for('static', filename='fan.js') }}" defer></script>
+    
+</head>
+<body>
+    <div class="container">
+        <!-- Temperature Gauge -->
+        <div class="gauge" id="temperature-gauge">
+            <div id="gauge__body">
+                <div id="gauge__fill"></div>
+                <div id="gauge__cover">0°C</div>
+            </div>
+        </div>
+
+        <!-- Humidity Gauge -->
+        <div id="fu-progress">
+            <div id="fu-inner">
+                <div id="water"></div>
+                <div id="fu-percent"><span>0%</span></div>
+            </div>
+        </div>
+
+        <div id="fan-container">
+            <img id="fan"   src = "{{ url_for('static', filename='fan.png') }}" alt="Fan Image" />
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
