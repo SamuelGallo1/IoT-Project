@@ -39,7 +39,10 @@ GPIO.output(Motor1,GPIO.LOW)
 GPIO.output(Motor2,GPIO.LOW)
 GPIO.output(Motor3,GPIO.LOW)
 
-
+#========================================================
+# TODO: CHANGE THE SMTP CREDENTIALS.
+# SAMUEL: create smtp account for project
+#=========================================================
 
 # Gmail configuration
 GMAIL_USER = 'gmail.com'
